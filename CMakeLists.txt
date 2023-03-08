@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-set(SDL_DIR "/home/x64/Desktop/SDL-2.23.0-fd2a2ee")
-set(ANDROID_NDK "/home/x64/Desktop/android-ndk-r25-beta4")
-set(ANDROID_ABI "x86_64") #arm64-v8a , x86 ,armeabi-v7a
+if (NOT EXISTS ${CMAKE_BINARY_DIR}/CMakeCache.txt)
+  if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
+  endif()
+endif()
+
+set(SDL_DIR "/home/x64/Downloads/SDL2-2.26.4")
+set(ANDROID_NDK "/home/x64/Android/Sdk/ndk/25.2.9519653")
+set(ANDROID_ABI "x86") #arm64-v8a , x86_64 ,armeabi-v7a
 set(ANDROID_PLATFORM "android-26")#27 28 .. 32 
 
 set(CMAKE_TOOLCHAIN_FILE "${ANDROID_NDK}/build/cmake/android.toolchain.cmake")
@@ -10,7 +16,7 @@ set(CMAKE_ANDROID_ARCH_ABI "${ANDROID_ABI}")
 set(CMAKE_ANDROID_NDK "${ANDROID_NDK}")
 set(CMAKE_SYSTEM_NAME "Android")
 set(CMAKE_SYSTEM_VERSION "26")
-#set(CMAKE_MAKE_PROGRAM "/home/x64/Android/Sdk/cmake/3.18.1/bin/ninja")
+#set(CMAKE_MAKE_PROGRAM "/home/x64/Android/Sdk/cmake/3.22.1/bin/ninja")
 
 add_compile_definitions(GL_GLEXT_PROTOTYPES)
 
